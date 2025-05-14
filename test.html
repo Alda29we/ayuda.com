@@ -80,6 +80,16 @@
       color: #666;
       margin-top: 2rem;
     }
+
+    @media (max-width: 600px) {
+      form {
+        padding: 1rem;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -91,29 +101,25 @@
   <main>
     <form id="testForm">
       <div class="question">
-        <p>1. ¿Te sientes frecuentemente menospreciado(a) o ridiculizado(a) por alguien cercano?</p>
+        <p>1. ¿Te sientes frecuentemente menospreciado(a) o ridiculizado(a)?</p>
         <label><input type="radio" name="q1" value="1"> Sí</label>
         <label><input type="radio" name="q1" value="0"> No</label>
       </div>
-
       <div class="question">
         <p>2. ¿Sientes miedo de expresar tus pensamientos o emociones?</p>
         <label><input type="radio" name="q2" value="1"> Sí</label>
         <label><input type="radio" name="q2" value="0"> No</label>
       </div>
-
       <div class="question">
-        <p>3. ¿Te aíslan de tus amigos o familiares sin una razón válida?</p>
+        <p>3. ¿Te aíslan de tus amigos o familiares sin razón válida?</p>
         <label><input type="radio" name="q3" value="1"> Sí</label>
         <label><input type="radio" name="q3" value="0"> No</label>
       </div>
-
       <div class="question">
-        <p>4. ¿Recibes constantemente amenazas, chantajes o manipulaciones emocionales?</p>
+        <p>4. ¿Recibes amenazas, chantajes o manipulaciones emocionales?</p>
         <label><input type="radio" name="q4" value="1"> Sí</label>
         <label><input type="radio" name="q4" value="0"> No</label>
       </div>
-
       <button type="submit">Ver Resultado</button>
     </form>
 
@@ -128,12 +134,10 @@
   <script>
     document.getElementById("testForm").addEventListener("submit", function(event) {
       event.preventDefault();
-
       const respuestas = ["q1", "q2", "q3", "q4"].map(name => {
         const seleccionada = document.querySelector(`input[name="${name}"]:checked`);
         return seleccionada ? parseInt(seleccionada.value) : 0;
       });
-
       const puntaje = respuestas.reduce((acc, val) => acc + val, 0);
       const result = document.getElementById("result");
 
@@ -142,7 +146,7 @@
       } else if (puntaje === 2) {
         result.textContent = "Podrías estar en una situación de riesgo emocional. Observa los patrones y busca ayuda si lo consideras necesario.";
       } else {
-        result.textContent = "No se detectan signos evidentes de violencia psicológica en tus respuestas. Pero si tienes dudas, no dudes en contactarnos.";
+        result.textContent = "No se detectan signos evidentes de violencia psicológica en tus respuestas.";
       }
     });
   </script>
